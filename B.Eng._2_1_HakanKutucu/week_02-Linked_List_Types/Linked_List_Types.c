@@ -50,9 +50,9 @@ node *addLast(node *head, int x){
     else{
         while(p->next != NULL)
             p= p->next;
+        p->next= temp;
         temp->next= NULL;
-    }
-    p->next= temp;
+        }
 
     return head;
 }
