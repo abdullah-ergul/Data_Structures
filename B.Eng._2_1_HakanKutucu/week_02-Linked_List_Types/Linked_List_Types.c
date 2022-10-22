@@ -11,8 +11,8 @@ typedef struct node node;
 node *addFront(node *, int);
 node *addLast(node *, int);
 void printList(node *);
-void printReverse(node *);
-int countList(node *);
+void printReverse(node *, int);
+int countList(node *, int);
 
 int main(){
     node *head= (node *)malloc(sizeof(node));
@@ -23,10 +23,8 @@ int main(){
     head= addFront(head, 2);
     head= addLast(head, 8);
     printList(head);
-    printReverse(head);
-    printf("\n--------------------------------\n\n");
-    printf("%d\n",countList(head));
-
+    printReverse(head, 0);
+    printf("Count of node: %d\n",countList(head, 0));
 
     return 0;
 }
@@ -66,15 +64,21 @@ void printList(node *head){
     printf("\n--------------------------------\n\n");
 }
 
-void printReverse(node *p){
+void printReverse(node *p, int i){
     if(p == NULL)
         return;
-    printReverse(p->next);
+    printReverse(p->next, i+1);
     printf("%d\n", p->data);
+
+    if(i == 0)
+        printf("\n--------------------------------\n\n");
 }
 
-int coutList(node *p){
+int countList(node *p, int i){
     if(p == NULL)
         return 0;
-    return 1 + coutList(p->next);
+    return 1 + countList(p->next, i+1);
+
+    if(i == 0)
+        printf("\n--------------------------------\n\n");
 }
