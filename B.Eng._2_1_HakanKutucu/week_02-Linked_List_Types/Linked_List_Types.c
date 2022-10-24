@@ -25,7 +25,7 @@ int main(){
     printList(head);
     printReverse(head, 0);
     printf("Count of node: %d\n",countList(head, 0));
-
+    
     return 0;
 }
 
