@@ -11,6 +11,8 @@ node *destroy(node *);
 
 int main(){
     
+    
+    return 0;
 }
 
 node *destroy(node *head){

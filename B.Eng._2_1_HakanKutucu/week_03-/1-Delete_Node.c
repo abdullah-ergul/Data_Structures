@@ -11,6 +11,8 @@ node *delete(node *, int);
 
 int main(){
 
+    
+    return 0;
 }
 
 node *delete(node *head, int x){

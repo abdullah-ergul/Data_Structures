@@ -12,7 +12,9 @@ bool function(node *, int);
 
 
 int main(){
-
+    
+    
+    return 0;
 }
 
 bool serach(node *p, int x){

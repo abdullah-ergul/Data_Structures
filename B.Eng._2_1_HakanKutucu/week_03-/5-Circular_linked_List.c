@@ -12,6 +12,7 @@ node *addFront(node *);
 
 int main(){
     
+    
     return 0;
 }
 
@@ -27,7 +28,7 @@ node *addFront(node *head){
         while(last->next != head)
             last= last->next;
         last->next= temp;
-        head= temp;
+        head= temp;     // If we want to write addLast() function, we should only delete this line of code.
     }
     return head;
 }
