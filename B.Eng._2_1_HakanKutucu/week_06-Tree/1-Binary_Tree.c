@@ -49,7 +49,7 @@ BTREE new_node(int data){
     return p;
 }
 
-void insertVoid(BTREE *root, int x){
+void insertVoid(BTREE root, int x){
     if(root->right == NULL && x > root->data || root->left == NULL && x < root->data){
         if(x < root->data)
             root->left= new_node(x);
