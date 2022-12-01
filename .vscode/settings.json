@@ -1,5 +1,16 @@
 {
     "files.associations": {
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "cmath": "c",
+        "*.tcc": "c",
+        "cstdarg": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "type_traits": "cpp",
+        "limits": "cpp",
+        "typeinfo": "cpp",
+        "climits": "cpp",
+        "cstdbool": "cpp"
     }
 }
