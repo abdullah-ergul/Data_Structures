@@ -1,0 +1,123 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+// AVL Tree
+struct node {
+    int data;
+    int height;
+    struct node *left;
+    struct node *right;
+};
+typedef struct node AVLTREE;
+
+int chooiceFunction(void);
+int maxValue(int, int);
+AVLTREE *new_node(int);
+AVLTREE *rightRotate(AVLTREE*);
+AVLTREE *leftRotate(AVLTREE*);
+AVLTREE *leftRightRotate(AVLTREE*);
+AVLTREE *rightLeftRotate(AVLTREE*);
+AVLTREE *insert(AVLTREE*, int);
+void inorder(AVLTREE*);
+
+
+int main() {
+    AVLTREE *myRoot= NULL;
+    int key, select;
+
+    printf("Enter -1 to exit..\nEnter a value: "); scanf("%d", &key);
+
+    while(key != -1) {
+        myRoot= insert(myRoot, key);
+        printf("Enter a value: "); scanf("%d", &key);
+    }
+
+
+    return 0;
+}
+
+int chooiceFunction() {
+    int chooice;
+
+    printf("1- Insert");
+    printf("2- Height");
+    printf("3- Inorder");
+    printf("-1- Insert");
+    printf("Your Chooice: "); scanf("%d", &chooice);
+
+    return chooice;
+}
+
+int maxValue(int x, int y) {
+    return x>=y?x:y;
+}
+
+AVLTREE *new_node(int data) {
+    AVLTREE *p= (AVLTREE *)malloc(sizeof(AVLTREE));
+    p->data= 0;
+    p->height= 0;
+    p->left= p->right= NULL;
+}
+
+AVLTREE *rightRotate(AVLTREE *z) {
+    AVLTREE *temp= z->left;
+    z->left= temp->left;
+    temp->right= z;
+
+    z->height= maxValue(z->left==NULL?-1:z->left->height, z->right==NULL?-1:z->right->height) + 1;
+    temp->height= maxValue(temp->left==NULL?-1:temp->left->height, temp->right==NULL?-1:temp->right->height) + 1;
+    return temp;
+}
+
+AVLTREE *leftRotate(AVLTREE *z) {
+    AVLTREE *temp= z->right;
+    z->right= temp->left;
+    temp->left= z;
+
+    z->height= maxValue(z->left==NULL?-1:z->left->height, z->right==NULL?-1:z->right->height) + 1;
+    temp->height= maxValue(temp->left==NULL?-1:temp->left->height, temp->right==NULL?-1:temp->right->height) + 1;
+    return temp;
+}
+
+AVLTREE *leftRightRotate(AVLTREE *z) {
+    z->left= leftRotate(z->left);
+    return rightRotate(z);
+}
+
+AVLTREE *rightLeftRotate(AVLTREE *z) {
+    z->right= rightRotate(z->right);
+    return leftRotate(z);
+}
+
+AVLTREE *insert(AVLTREE *root, int data) {
+    if(root == NULL)
+        root= new_node(data);
+    else {
+        if(data < root->data)
+            root->left= insert(root->left, data);
+        else
+            root->right= insert(root->right, data);
+
+        root->height= maxValue(root->left==NULL?-1:root->left->height, root->right==NULL?-1:root->right->height) + 1;
+
+        if((root->left == NULL?-1:root->left->height)-(root->right == NULL?-1:root->right->height) > 1 && data < root->left->data)
+            return rightRotate(root); 
+
+        if((root->left == NULL?-1:root->left->height)-(root->right == NULL?-1:root->right->height) > 1 && data < root->right->data)
+            return leftRightRotate(root);
+
+        if((root->left == NULL?-1:root->left->height)-(root->right == NULL?-1:root->right->height) < -1 && data < root->right->data)
+            return leftRotate(root); 
+
+        if((root->left == NULL?-1:root->left->height)-(root->right == NULL?-1:root->right->height) < -1 && data < root->right->data)
+            return rightLeftRotate(root);
+    }
+    return root;
+}
+
+void inorder(AVLTREE *root) {
+    if(root != NULL) {
+
+    }
+}
