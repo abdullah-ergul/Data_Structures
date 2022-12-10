@@ -33,6 +33,24 @@ int main() {
         printf("Enter a value: "); scanf("%d", &key);
     }
 
+    int choice= chooseFunc();
+
+    while(1) {
+        if(choice == 1) {
+            printf("Enter -1 to exit..\nEnter a value: "); scanf("%d", &key);
+            myRoot= insert(myRoot, key);
+        }
+        else if(choice == 2)
+            printf("Height of AVL Tree: %d\n", maxValue(myRoot->left, myRoot->right));
+        else if(choice == 3)
+            inorder(myRoot);
+        else if(choice == 0)
+            break;
+        else
+            printf("Your Choice is Not Found! Please Enter a Diffrent Number.");
+
+        choice= chooiceFunction();
+    }
 
     return 0;
 }
@@ -40,10 +58,10 @@ int main() {
 int chooiceFunction() {
     int chooice;
 
-    printf("1- Insert");
-    printf("2- Height");
-    printf("3- Inorder");
-    printf("-1- Insert");
+    printf("1- Insert\n");
+    printf("2- Height\n");
+    printf("3- Inorder\n");
+    printf("0- Insert\n");
     printf("Your Chooice: "); scanf("%d", &chooice);
 
     return chooice;
