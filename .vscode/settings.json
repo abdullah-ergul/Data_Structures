@@ -11,6 +11,12 @@
         "limits": "cpp",
         "typeinfo": "cpp",
         "climits": "cpp",
-        "cstdbool": "cpp"
+        "cstdbool": "cpp",
+        "math.h": "c",
+        "crtdefs.h": "c",
+        "_mingw.h": "c",
+        "_mingw_mac.h": "c",
+        "_cygwin.h": "c",
+        "1-avl_tree": "c"
     }
 }
