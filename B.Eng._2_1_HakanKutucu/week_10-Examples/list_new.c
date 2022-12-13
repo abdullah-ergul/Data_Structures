@@ -14,6 +14,11 @@ typedef struct node {
     struct node *left;
 } BTREE;
 
+BTREE *new_node(char *name, double number, float final);
+BTREE *insert(BTREE *root, char *name, double number, float final);
+void list(BTREE *root, BTREE *main, int x);
+void inorder(BTREE *root);
+
 BTREE *new_node(char *name, double number, float final) {
     BTREE *p= (BTREE *)malloc(sizeof(struct node));
     strcpy(p->name, name);  p->number= number; p->final= final;
