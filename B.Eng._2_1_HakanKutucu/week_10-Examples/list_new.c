@@ -17,7 +17,6 @@ typedef struct node {
 BTREE *new_node(char *name, double number, float final);
 BTREE *insert(BTREE *root, char *name, double number, float final);
 void list(BTREE *root, BTREE *main, int x);
-void inorder(BTREE *root);
 
 BTREE *new_node(char *name, double number, float final) {
     BTREE *p= (BTREE *)malloc(sizeof(struct node));
@@ -58,6 +57,9 @@ void list(BTREE *root, BTREE *main, int x) {
         // calculate avarage
         float avarage= sum / count;
 
+        // inordered list
+        list(root->left, root->left, 1);
+
         if (root->final > avarage){
             printf("Name: %s  ", root->name);
             //printf("Surname: %s", root->sname);
@@ -65,17 +67,8 @@ void list(BTREE *root, BTREE *main, int x) {
             printf("final: %f", root->final);
             printf("\n");
         }
-
-        list(root->left, root->left, 1);
+        
         list(root->right, root->right, 1);
-    }
-}
-
-void inorder(BTREE *root){
-    if(root != NULL){
-        inorder(root->left);
-        printf("%s ",root->name);
-        inorder(root->right);
     }
 }
 
