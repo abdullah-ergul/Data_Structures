@@ -141,3 +141,13 @@ void inorder(AVLTREE *root) {
         inorder(root->right);
     }
 }
+
+AVLTREE *minValueNode(AVLTREE *root) {
+    if(root->left == NULL)
+        return root;
+    
+}
+
+AVLTREE *deleteNode(AVLTREE *root) {
+
+}
