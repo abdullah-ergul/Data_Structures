@@ -1,3 +1,21 @@
+/**
+ * @file list_new.c
+ * @author Abdullah Ergul (abdullahergul23@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 16-12-2022
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
+/*
+    In a Binary Tree consisting of nodes which have student information such as name, surname, number and final.
+    Write a program that lists the students who have final grade above the avarage of the final grades in the classroom.
+    Write the node structure. Note that you should calculate the avarage of the final grades.
+    Write codes with only one list function.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,6 +35,35 @@ typedef struct node {
 BTREE *new_node(char *name, double number, float final);
 BTREE *insert(BTREE *root, char *name, double number, float final);
 void list(BTREE *root, BTREE *main, int x);
+
+
+int main() {
+    // * Get number from user till enter -1
+    BTREE *myRoot= NULL;
+    char name[20];
+    char sname[20];
+    double number;
+    float final;
+
+    printf("Name: "); scanf("%s",name);
+    //printf("Surname: "); scanf("%s",sname);
+    printf("Number: "); scanf("%lf",&number);
+    printf("Final: "); scanf("%f",&final);
+    printf("\n");
+
+    while(number != -1){
+        myRoot= insert(myRoot, name, number, final);
+        printf("Name: "); scanf("%s",name);
+        //printf("Surname: "); scanf("%s",sname);
+        printf("Number: "); scanf("%lf",&number);
+        printf("Final: "); scanf("%f",&final);
+        printf("\n");
+    }
+
+    list(myRoot, myRoot, 0);
+
+    return 0;
+}
 
 BTREE *new_node(char *name, double number, float final) {
     BTREE *p= (BTREE *)malloc(sizeof(struct node));
@@ -70,33 +117,4 @@ void list(BTREE *root, BTREE *main, int x) {
         
         list(root->right, root->right, 1);
     }
-}
-
-
-int main() {
-    // * Get number from user till enter -1
-    BTREE *myRoot= NULL;
-    char name[20];
-    char sname[20];
-    double number;
-    float final;
-
-    printf("Name: "); scanf("%s",name);
-    //printf("Surname: "); scanf("%s",sname);
-    printf("Number: "); scanf("%lf",&number);
-    printf("Final: "); scanf("%f",&final);
-    printf("\n");
-
-    while(number != -1){
-        myRoot= insert(myRoot, name, number, final);
-        printf("Name: "); scanf("%s",name);
-        //printf("Surname: "); scanf("%s",sname);
-        printf("Number: "); scanf("%lf",&number);
-        printf("Final: "); scanf("%f",&final);
-        printf("\n");
-    }
-
-    list(myRoot, myRoot, 0);
-
-    return 0;
 }
