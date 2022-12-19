@@ -13,14 +13,6 @@ typedef struct node {
     struct node *next;
 } node;
 
-node *add(node *);
-
-
-int main () {
-
-
-    return 0;
-}
 
 node *add (node *head) {
     node *iter= head;
