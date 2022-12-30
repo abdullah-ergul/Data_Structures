@@ -3,11 +3,6 @@
 #define STACK_SIZE 3
 
 typedef struct{
-    int data;
-    struct node *next;
-} node;
-
-typedef struct{
     int top;
     int data[STACK_SIZE];
 } stack;
@@ -46,6 +41,6 @@ int pop(stack *stk){
         // int x= stk->data[stk->top];
         // stk->top--;
         // return x;
-        return stk->data[--stk->top];
+        return stk->data[stk->top--];
     }
 }
