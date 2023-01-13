@@ -9,6 +9,7 @@ typedef struct node {
 
 node *addEdge(node *, int);
 int outDegree(node *[], int);
+int inDegree(node *[], int);
 
 
 int main() {
@@ -35,7 +36,12 @@ int main() {
 
 
     for(i=0 ; i<5 ; i++)
-        printf("%d -> %d\n", i+1, outDegree(heads,i));
+        printf("%d's outdegree -> %d\n", i+1, outDegree(heads,i));
+
+    printf("\n----------------\n\n");
+
+    for(i=0 ; i<5 ; i++)
+        printf("%d's indegree -> %d\n", i+1, inDegree(heads, i+1));
 
     return 0;
 }
@@ -67,4 +73,19 @@ int outDegree(node *heads[], int v) {
     }
     
     return result-1;
+}
+
+int inDegree(node *heads[], int v) {
+    int i, result= 0;
+    node *temp;
+
+    for(i=0 ; i<5 ; i++) {
+        temp = heads[i]->next;
+        while (temp != NULL) {
+            if (temp->data == v)
+                result++;
+            temp = temp->next;
+        }
+    }
+    return result;
 }
